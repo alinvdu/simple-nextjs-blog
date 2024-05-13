@@ -18,7 +18,7 @@ export async function generateMetadata({
 }) {
   const post = await getPost({ params });
   return {
-    title: `${post.title} | Simple Next 13 Blog`,
+    title: `${post.title}`,
   };
 }
 
