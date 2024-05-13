@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,6 +10,11 @@ import Tag from '../../../components/Tag';
 import AuthorAvatar from '../../../components/AuthorAvatar';
 import AuthorAttribution from '../../../components/AuthorAttribution';
 import { sanitize } from 'isomorphic-dompurify';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { vs2015 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import he from 'he';
+
+const CustomSyntaxHighlighter = SyntaxHighlighter as any;
 
 export async function generateMetadata({
   params,
@@ -19,6 +25,79 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Simple Next 13 Blog`,
   };
+}
+
+const containsCode = (data: string) => {
+  if (data.includes('```python') || data.includes('```javascrippt')) {
+    return true
+  }
+
+  return false
+}
+
+const parseContent = (post: string) => {
+  const regex = /```python(.*?)```/gms;
+  let result = [];
+  let lastIndex = 0;
+
+  // Extract text and code alternately
+  post.replace(regex, (match, code, index) => {
+    const text = post.slice(lastIndex, index);
+    lastIndex = index + match.length;
+    result.push({ type: 'text', content: text });
+    result.push({ type: 'code', content: code.trim() });
+    return match;
+  });
+
+  // Add any remaining text after the last code block
+  if (lastIndex < post.length) {
+    result.push({ type: 'text', content: post.slice(lastIndex) });
+  }
+
+  return result;
+};
+
+const renderContent = (post: string) => {
+  const content = parseContent(post);
+  return content.map((item, index) => {
+    if (item.type === 'text') {
+      return (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: sanitize(item.content) ?? '',
+          }}
+        ></div>
+      );
+    } else if (item.type === 'code') {
+      return (
+        <CustomSyntaxHighlighter
+          key={`code-${index}`}
+          language="python"
+          style={vs2015}
+          showLineNumbers
+          customStyle={{ fontSize: '14px' }}
+        >
+        {extractCode(item.content)}
+      </CustomSyntaxHighlighter>
+      )
+    }
+  });
+}
+
+function extractCode(content: string) {
+  // Regex to extract content between <p> tags
+  const regex = /<p>(.*?)<\/p>/g;
+  let codeMatches = [];
+  
+  let match;
+  while (match = regex.exec(content)) {
+    // Strip any remaining HTML tags from the matched content and decode HTML entities
+    const cleanLine = he.decode(match[1].replace(/<[^>]+>/g, ''));
+    codeMatches.push(cleanLine);
+  }
+
+  // Join all lines with newline characters to preserve the code structure
+  return codeMatches.join('\n');
 }
 
 export default async ({ params }: { params: { slug: string } }) => {
@@ -69,16 +148,18 @@ export default async ({ params }: { params: { slug: string } }) => {
                   </div>
                 </div>
                 <hr className="w-full border-t border-zinc-300 pb-8 dark:border-zinc-700" />
-                <div
+                {containsCode(post.metadata.content) ? renderContent(post.metadata.content) : (
+                  <div
                   dangerouslySetInnerHTML={{
                     __html: sanitize(post.metadata.content) ?? '',
                   }}
                 ></div>
+                )}
               </>
             )}
             <div className="mx-auto mt-8 w-full">
               <hr className="w-full border-t border-zinc-300 pb-8 dark:border-zinc-700" />
-              {suggestedPosts && (
+              {suggestedPosts && suggestedPosts.length && (
                 <div className="flex w-full flex-col">
                   <h3 className="pb-3 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                     Suggested Posts
