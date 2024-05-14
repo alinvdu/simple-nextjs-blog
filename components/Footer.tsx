@@ -10,9 +10,8 @@ export default function Footer(): JSX.Element {
         className="no-underline"
       >
         <div className="flex items-center space-x-2">
-          <CosmicLogo />
           <span className="text-zinc-700 dark:text-zinc-300">
-            Proudly powered by Cosmic
+            Cogito Machina - AI, Neuroscience & Consciousness.
           </span>
         </div>
       </a>

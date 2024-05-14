@@ -31,6 +31,7 @@ export default async function RootLayout({
       <body className="bg-white dark:bg-zinc-950">
         <Header name={siteData} />
         {children}
+        <Footer />
       </body>
     </html>
   );
