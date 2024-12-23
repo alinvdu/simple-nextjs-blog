@@ -25,7 +25,16 @@ const MailchimpForm = () => {
           color: #fff;
           clear: left;
           font: 14px Helvetica, Arial, sans-serif;
-          width: 600px;
+          width: 100%; /* Default full width */
+          max-width: 600px; /* Maximum width on larger screens */
+          margin: 0 auto; /* Center the form horizontally */
+        }
+      
+        /* Media query for small screens */
+        @media (max-width: 640px) {
+          #mc_embed_signup {
+            max-width: 90%; /* Shrink form width to 90% of the screen */
+          }
         }
         #mc_embed_signup h2,
         #mc_embed_signup .indicates-required,
@@ -303,9 +312,7 @@ export default async ({ params }: { params: { slug: string } }) => {
                 Subscribe to articles like this
               </h3>
               <div className="flex justify-center">
-                <div className="w-full max-w-[95%] md:max-w-[480px]">
                   <MailchimpForm />
-                </div>
               </div>
             </div>
             <div className="mx-auto mt-8 w-full">
