@@ -11,6 +11,183 @@ import AuthorAttribution from '../../../components/AuthorAttribution';
 import { sanitize } from 'isomorphic-dompurify';
 import CodeBlock from "./codeblock";
 
+import React from "react";
+
+const MailchimpForm = () => {
+  return (
+    <div id="mc_embed_shell">
+      <link
+        href="//cdn-images.mailchimp.com/embedcode/classic-061523.css"
+        rel="stylesheet"
+        type="text/css"
+      />
+      <style>{`
+        #mc_embed_signup {
+          background: #000;
+          color: #fff;
+          clear: left;
+          font: 14px Helvetica, Arial, sans-serif;
+          width: 600px;
+        }
+        #mc_embed_signup h2,
+        #mc_embed_signup .indicates-required,
+        #mc_embed_signup label {
+          color: #fff;
+        }
+        #mc_embed_signup input[type="email"],
+        #mc_embed_signup input[type="text"],
+        #mc_embed_signup input[type="submit"] {
+          background: #333;
+          color: #fff;
+          border: 1px solid #666;
+        }
+        #mc_embed_signup input[type="submit"] {
+          background: #555;
+          border: 1px solid #777;
+          color: #fff;
+          cursor: pointer;
+        }
+        #mc_embed_signup input[type="submit"]:hover {
+          background: #777;
+        }
+        .response {
+          color: #fff;
+        }
+        a {
+          color: #00f;
+        }
+        .refferal_badge {
+          background-color: #000;
+        }
+      `}</style>
+      <div id="mc_embed_signup">
+        <form
+          action="https://cogitomachina.us11.list-manage.com/subscribe/post?u=ddca95e547b5b94c61e581877&amp;id=1cf140bb69&amp;f_id=004d0fe1f0"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          className="validate"
+          target="_blank"
+        >
+          <div id="mc_embed_signup_scroll">
+            <h2>Subscribe</h2>
+            <div className="indicates-required">
+              <span className="asterisk">*</span> indicates required
+            </div>
+            <div className="mc-field-group">
+              <label htmlFor="mce-EMAIL">
+                Email Address <span className="asterisk">*</span>
+              </label>
+              <input
+                type="email"
+                name="EMAIL"
+                className="required email"
+                id="mce-EMAIL"
+                required
+                defaultValue=""
+              />
+            </div>
+            <div id="mce-responses" className="clear foot">
+              <div
+                className="response"
+                id="mce-error-response"
+                style={{ display: "none" }}
+              ></div>
+              <div
+                className="response"
+                id="mce-success-response"
+                style={{ display: "none" }}
+              ></div>
+            </div>
+            <div
+              aria-hidden="true"
+              style={{ position: "absolute", left: "-5000px" }}
+            >
+              <input
+                type="text"
+                name="b_ddca95e547b5b94c61e581877_1cf140bb69"
+                tabIndex="-1"
+                defaultValue=""
+              />
+            </div>
+            <div className="optionalParent">
+              <div className="clear foot">
+                <input
+                  type="submit"
+                  name="subscribe"
+                  id="mc-embedded-subscribe"
+                  className="button"
+                  value="Subscribe"
+                />
+                <p style={{ margin: "0px auto" }}>
+                  <a
+                    href="http://eepurl.com/i6J8VA"
+                    title="Mailchimp - email marketing made easy and fun"
+                  >
+                    <span
+                      style={{
+                        display: "inline-block",
+                        backgroundColor: "black",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      <img
+                        className="refferal_badge"
+                        src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-light.svg"
+                        alt="Intuit Mailchimp"
+                        style={{
+                          width: "220px",
+                          height: "40px",
+                          display: "flex",
+                          padding: "2px 0px",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      />
+                    </span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <script
+        type="text/javascript"
+        src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+      ></script>
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function($) {
+              window.fnames = new Array();
+              window.ftypes = new Array();
+              fnames[0] = 'EMAIL';
+              ftypes[0] = 'email';
+              fnames[1] = 'FNAME';
+              ftypes[1] = 'text';
+              fnames[2] = 'LNAME';
+              ftypes[2] = 'text';
+              fnames[3] = 'ADDRESS';
+              ftypes[3] = 'address';
+              fnames[4] = 'PHONE';
+              ftypes[4] = 'phone';
+              fnames[5] = 'BIRTHDAY';
+              ftypes[5] = 'birthday';
+              fnames[6] = 'COMPANY';
+              ftypes[6] = 'text';
+            }(jQuery));
+            var $mcj = jQuery.noConflict(true);
+          `,
+        }}
+      ></script>
+    </div>
+  );
+};
+
+export default MailchimpForm;
+
 export async function generateMetadata({
   params,
 }: {
@@ -128,6 +305,13 @@ export default async ({ params }: { params: { slug: string } }) => {
                 )}
               </>
             )}
+            <div className="mx-auto mt-8 w-full">
+              <hr className="w-full border-t border-zinc-300 pb-8 dark:border-zinc-700" />
+              <h3 className="pb-3 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
+                Subscribe to articles like this
+              </h3>
+              <MailchimpForm />
+            </div>
             <div className="mx-auto mt-8 w-full">
               <hr className="w-full border-t border-zinc-300 pb-8 dark:border-zinc-700" />
               {suggestedPosts && suggestedPosts.length && (
