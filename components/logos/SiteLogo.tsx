@@ -9,7 +9,7 @@ export default function SiteLogo({
   siteData: GlobalData;
 }): JSX.Element {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between px-4 py-4 md:flex-row lg:px-0">
+    <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-between px-4 py-4 md:flex-row lg:px-0">
       <h1 className="flex space-x-2" style={{
         alignItems: 'center'
       }}>
