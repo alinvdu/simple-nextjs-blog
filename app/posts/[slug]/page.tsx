@@ -68,9 +68,6 @@ const MailchimpForm = () => {
           target="_blank"
         >
           <div id="mc_embed_signup_scroll">
-            <div className="indicates-required">
-              <span className="asterisk">*</span> indicates required
-            </div>
             <div className="mc-field-group">
               <label htmlFor="mce-EMAIL">
                 Email Address <span className="asterisk">*</span>
@@ -306,7 +303,9 @@ export default async ({ params }: { params: { slug: string } }) => {
                 Subscribe to articles like this
               </h3>
               <div className="flex justify-center">
-                <MailchimpForm />
+                <div className="w-full max-w-[95%] sm:max-w-[600px]">
+                  <MailchimpForm />
+                </div>
               </div>
             </div>
             <div className="mx-auto mt-8 w-full">
