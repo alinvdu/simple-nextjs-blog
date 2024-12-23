@@ -104,7 +104,7 @@ const MailchimpForm = () => {
               <input
                 type="text"
                 name="b_ddca95e547b5b94c61e581877_1cf140bb69"
-                tabIndex="-1"
+                tabIndex={-1}
                 defaultValue=""
               />
             </div>
