@@ -99,7 +99,7 @@ export default async ({ params }: { params: { slug: string } }) => {
               <ArrowLeft className="h-4 w-4" />
             </Link>
           </div>
-          <div className="mr-20 flex w-full max-w-4xl flex-col justify-start md:w-3/4">
+          <div className="mr-20 flex w-full max-w-5xl flex-col justify-start md:w-3/4">
             <h2>
               {!post && <div className="text-center">Post Not found</div>}
               {post && <Link href={`/posts/${post.slug}`}>{post.title}</Link>}
