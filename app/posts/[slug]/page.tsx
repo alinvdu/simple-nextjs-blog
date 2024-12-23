@@ -11,8 +11,6 @@ import AuthorAttribution from '../../../components/AuthorAttribution';
 import { sanitize } from 'isomorphic-dompurify';
 import CodeBlock from "./codeblock";
 
-import React from "react";
-
 const MailchimpForm = () => {
   return (
     <div id="mc_embed_shell">
