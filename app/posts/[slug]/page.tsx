@@ -184,8 +184,6 @@ const MailchimpForm = () => {
   );
 };
 
-export default MailchimpForm;
-
 export async function generateMetadata({
   params,
 }: {
