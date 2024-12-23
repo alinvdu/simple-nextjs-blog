@@ -48,11 +48,11 @@ const MailchimpForm = () => {
         #mc_embed_signup input[type="submit"]:hover {
           background: #777;
         }
+        #mc_embed_shell a {
+          color: #00f; /* Scoped to only this form */
+        }
         .response {
           color: #fff;
-        }
-        a {
-          color: #00f;
         }
         .refferal_badge {
           background-color: #000;
@@ -68,7 +68,6 @@ const MailchimpForm = () => {
           target="_blank"
         >
           <div id="mc_embed_signup_scroll">
-            <h2>Subscribe</h2>
             <div className="indicates-required">
               <span className="asterisk">*</span> indicates required
             </div>
@@ -104,7 +103,7 @@ const MailchimpForm = () => {
               <input
                 type="text"
                 name="b_ddca95e547b5b94c61e581877_1cf140bb69"
-                tabIndex={-1}
+                tabIndex={-1} // Corrected
                 defaultValue=""
               />
             </div>
@@ -306,7 +305,9 @@ export default async ({ params }: { params: { slug: string } }) => {
               <h3 className="pb-3 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                 Subscribe to articles like this
               </h3>
-              <MailchimpForm />
+              <div className="flex justify-center">
+                <MailchimpForm />
+              </div>
             </div>
             <div className="mx-auto mt-8 w-full">
               <hr className="w-full border-t border-zinc-300 pb-8 dark:border-zinc-700" />
