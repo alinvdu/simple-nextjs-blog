@@ -303,7 +303,7 @@ export default async ({ params }: { params: { slug: string } }) => {
                 Subscribe to articles like this
               </h3>
               <div className="flex justify-center">
-                <div className="w-full max-w-[95%] sm:max-w-[600px]">
+                <div className="w-full max-w-[95%] md:max-w-[480px]">
                   <MailchimpForm />
                 </div>
               </div>
