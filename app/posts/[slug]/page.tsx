@@ -310,7 +310,7 @@ export default async ({ params }: { params: { slug: string } }) => {
             )}
             <div className="mx-auto mt-8 w-full" id="subscribe">
               <hr className="w-full border-t border-zinc-300 pb-8 dark:border-zinc-700" />
-              <h3 className="pb-3 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
+              <h3 className="pb-3 text-xl font-semibold text-zinc-800 dark:text-zinc-200 pb-1">
                 Subscribe to CogitoMachina
               </h3>
               <p className="text-white pt-1">
