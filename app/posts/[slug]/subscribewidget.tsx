@@ -27,7 +27,7 @@ const SubscribeWidget = () => {
     if (subscribeElement) {
       subscribeElement.scrollIntoView({ behavior: "smooth" });
     }
-    setShowWidget(false); // Temporarily hide widget after navigating
+    hideWidget();
   };
 
   // Function to permanently hide the widget
@@ -48,9 +48,9 @@ const SubscribeWidget = () => {
             onClick={hideWidget}
             className="absolute top-2 right-2 text-white text-lg rounded-full hover:bg-white hover:text-black flex items-center justify-center transition-all duration-200"
             style={{
-              width: "24px",
-              height: "24px",
-              lineHeight: "24px",
+              width: "21px",
+              height: "21px",
+              lineHeight: "21px",
             }}
           >
             ✕
