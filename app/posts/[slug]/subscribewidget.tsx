@@ -51,7 +51,7 @@ const SubscribeWidget = () => {
               width: "21px",
               height: "21px",
               lineHeight: "21px",
-              fontSize: "18px"
+              fontSize: "16px"
             }}
           >
             ✕
