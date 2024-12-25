@@ -46,25 +46,26 @@ const SubscribeWidget = () => {
           {/* Close Button */}
           <button
             onClick={hideWidget}
-            className="absolute top-0 right-2 text-white flex items-center justify-center transition-all duration-200"
+            className="absolute top-0 right-0 text-white flex items-center justify-center transition-all duration-200 hover:scale-110"
             style={{
-              fontSize: "16px",
-              padding: "2px"
+              fontSize: "16px"
             }}
           >
             ✕
           </button>
 
           {/* Widget Content */}
-          <p className="text-white text-sm" style={{marginTop: "3px"}}>
+          <p className="text-white text-sm" style={{marginTop: "4px"}}>
             Don’t miss it, subscribe to futuristic ideas.
           </p>
-          <button
-            onClick={navigateToSubscribe}
-            className="px-3 py-1 text-sm w-[100px] text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
-          >
-            Learn More
-          </button>
+          <div className="flex justify-center">
+            <button
+              onClick={navigateToSubscribe}
+              className="px-3 py-1 text-sm w-[100px] text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
+            >
+              I'd love to!
+            </button>
+          </div>
         </div>
       )}
     </>
