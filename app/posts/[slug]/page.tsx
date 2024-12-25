@@ -313,7 +313,7 @@ export default async ({ params }: { params: { slug: string } }) => {
               <h3 className="pb-3 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                 Subscribe to CogitoMachina
               </h3>
-              <p>
+              <p className="text-white pt-1">
                 You’ll periodically receive articles about futuristic ideas related to artificial intelligence, the human mind, neuroscience, and consciousness.
               </p>
               <div className="flex justify-center">
