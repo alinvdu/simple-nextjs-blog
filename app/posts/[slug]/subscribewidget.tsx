@@ -48,9 +48,9 @@ const SubscribeWidget = () => {
             onClick={hideWidget}
             className="absolute top-2 right-2 text-white rounded-full hover:bg-white hover:text-black flex items-center justify-center transition-all duration-200"
             style={{
-              width: "21px",
-              height: "21px",
-              lineHeight: "21px",
+              width: "16px",
+              height: "16px",
+              lineHeight: "16px",
               fontSize: "16px"
             }}
           >
