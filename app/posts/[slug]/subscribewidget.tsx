@@ -10,7 +10,7 @@ const SubscribeWidget = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY; // Current scroll position
-      if (scrollPosition > 300 && !permanentlyDismissed) { // Show widget if not dismissed
+      if (scrollPosition > 1500 && !permanentlyDismissed) { // Show widget if not dismissed
         setShowWidget(true);
       }
     };
