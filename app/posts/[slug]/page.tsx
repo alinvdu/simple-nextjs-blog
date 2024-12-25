@@ -260,7 +260,7 @@ export default async ({ params }: { params: { slug: string } }) => {
         <Image
           width={1400}
           height={720}
-          className="mb-5 w-full bg-no-repeat object-cover object-cover h-[500px] sm:h-[720px]"
+          className="mb-5 w-full bg-no-repeat object-cover h-[450px] sm:h-[720px]"
           src={`${post.metadata.hero?.imgix_url}?w=1400&auto=format`}
           priority
           alt={post.title}
