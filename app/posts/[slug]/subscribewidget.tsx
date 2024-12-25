@@ -21,7 +21,16 @@ const SubscribeWidget = () => {
     };
   }, [permanentlyDismissed]);
 
-  // Function to hide the widget permanently
+  // Function to navigate to the subscribe section and hide the widget
+  const navigateToSubscribe = () => {
+    const subscribeElement = document.getElementById("subscribe");
+    if (subscribeElement) {
+      subscribeElement.scrollIntoView({ behavior: "smooth" });
+    }
+    setShowWidget(false); // Temporarily hide widget after navigating
+  };
+
+  // Function to permanently hide the widget
   const hideWidget = () => {
     setPermanentlyDismissed(true); // Prevent widget from reappearing
     setShowWidget(false); // Hide the widget
@@ -31,7 +40,7 @@ const SubscribeWidget = () => {
     <>
       {showWidget && (
         <div
-          className="fixed top-24 right-4 w-80 bg-black shadow-lg rounded-lg p-6 flex flex-col space-y-4 dark:bg-zinc-800"
+          className="fixed top-24 right-4 w-72 bg-black shadow-lg rounded-lg p-4 flex flex-col space-y-2 dark:bg-zinc-800"
           style={{ zIndex: 1000 }}
         >
           {/* Close Button */}
@@ -52,8 +61,8 @@ const SubscribeWidget = () => {
             Don’t miss it, subscribe to futuristic ideas.
           </p>
           <button
-            onClick={hideWidget}
-            className="px-4 py-2 text-sm text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
+            onClick={navigateToSubscribe}
+            className="px-3 py-1 text-sm text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
           >
             Learn More
           </button>
@@ -64,4 +73,3 @@ const SubscribeWidget = () => {
 };
 
 export default SubscribeWidget;
-
