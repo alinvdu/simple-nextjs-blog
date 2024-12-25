@@ -55,7 +55,7 @@ const SubscribeWidget = () => {
           </button>
 
           {/* Widget Content */}
-          <p className="text-white text-sm" style={{marginTop: "4px"}}>
+          <p className="text-white text-sm" style={{marginTop: "6px"}}>
             Don’t miss it, subscribe to futuristic ideas.
           </p>
           <div className="flex justify-center">
