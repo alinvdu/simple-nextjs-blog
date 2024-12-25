@@ -46,7 +46,7 @@ const SubscribeWidget = () => {
           {/* Close Button */}
           <button
             onClick={hideWidget}
-            className="absolute top-0 right-0 text-white flex items-center justify-center transition-all duration-200 hover:scale-110"
+            className="absolute top-2 right-2 text-white flex items-center justify-center transition-all duration-200 hover:scale-110"
             style={{
               fontSize: "16px"
             }}
