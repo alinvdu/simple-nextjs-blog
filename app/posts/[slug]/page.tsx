@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Link from 'next/link';
 import Image from 'next/image';
 import ArrowLeft from '../../../components/icons/ArrowLeft';
@@ -253,6 +253,36 @@ export default async ({ params }: { params: { slug: string } }) => {
   const post = await getPost({ params });
   const suggestedPosts = await getRelatedPosts({ params });
 
+  const [showWidget, setShowWidget] = useState(false);
+
+  // Effect to handle showing the widget after scrolling down
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY; // Current scroll position
+      if (scrollPosition > 1200) { // Show widget after 300px scroll
+        setShowWidget(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+   // Function to navigate to the subscribe section
+  const navigateToSubscribe = () => {
+    const subscribeElement = document.getElementById("subscribe");
+    if (subscribeElement) {
+      subscribeElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Function to dismiss the widget
+  const dismissWidget = () => {
+    setShowWidget(false);
+  };
+
   return (
     <>
       {post && post.metadata.hero?.imgix_url && (
@@ -266,6 +296,29 @@ export default async ({ params }: { params: { slug: string } }) => {
           placeholder="blur"
           blurDataURL={`${post.metadata.hero?.imgix_url}?auto=format,compress&q=1&blur=500&w=2`}
         />
+      )}
+      {showWidget && (
+        <div
+          className="fixed top-16 right-4 bg-white shadow-lg rounded-lg p-4 dark:bg-zinc-800 dark:text-white"
+          style={{ zIndex: 1000 }}
+        >
+          <div className="flex justify-between items-center">
+            <h4 className="text-lg font-semibold">Learn More</h4>
+            <button
+              onClick={dismissWidget}
+              className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+            >
+              ✕
+            </button>
+          </div>
+          <p className="text-sm my-4">Don’t miss it, subscribe to futuristic ideas.</p>
+          <button
+            onClick={navigateToSubscribe}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Subscribe
+          </button>
+        </div>
       )}
       <main className="mx-auto flex flex-col justify-center">
         <div className="mx-auto flex w-full flex-col items-start justify-center px-4 md:flex-row">
@@ -306,11 +359,14 @@ export default async ({ params }: { params: { slug: string } }) => {
                 )}
               </>
             )}
-            <div className="mx-auto mt-8 w-full">
+            <div className="mx-auto mt-8 w-full" id="subscribe">
               <hr className="w-full border-t border-zinc-300 pb-8 dark:border-zinc-700" />
               <h3 className="pb-3 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
-                Subscribe to articles like this
+                Subscribe to CogitoMachina
               </h3>
+              <p>
+                You’ll periodically receive articles about futuristic ideas related to artificial intelligence, the human mind, neuroscience, and consciousness.
+              </p>
               <div className="flex justify-center">
                   <MailchimpForm />
               </div>
