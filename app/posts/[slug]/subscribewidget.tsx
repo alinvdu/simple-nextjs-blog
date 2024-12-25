@@ -20,42 +20,42 @@ const SubscribeWidget = () => {
     };
   }, []);
 
-  // Function to navigate to the subscribe section
+  // Function to navigate to the subscribe section and hide the widget
   const navigateToSubscribe = () => {
     const subscribeElement = document.getElementById("subscribe");
     if (subscribeElement) {
       subscribeElement.scrollIntoView({ behavior: "smooth" });
     }
+    setShowWidget(false); // Hide the widget after pressing Learn More
   };
 
   // Function to dismiss the widget
   const dismissWidget = () => {
-    setShowWidget(false);
+    setShowWidget(false); // Permanently hide the widget
   };
 
   return (
     <>
       {showWidget && (
         <div
-          className="fixed top-16 right-4 bg-white shadow-lg rounded-lg p-4 dark:bg-zinc-800 dark:text-white"
+          className="fixed top-16 right-4 bg-white shadow-lg rounded-lg p-3 dark:bg-zinc-800 dark:text-white flex flex-col items-start space-y-2"
           style={{ zIndex: 1000 }}
         >
-          <div className="flex justify-between items-center">
-            <h4 className="text-lg font-semibold">Learn More</h4>
+          <p className="text-sm">Don’t miss it, subscribe to futuristic ideas.</p>
+          <div className="flex space-x-2">
+            <button
+              onClick={navigateToSubscribe}
+              className="px-3 py-1 text-sm text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
+            >
+              Learn More
+            </button>
             <button
               onClick={dismissWidget}
-              className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+              className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm"
             >
               ✕
             </button>
           </div>
-          <p className="text-sm my-4">Don’t miss it, subscribe to futuristic ideas.</p>
-          <button
-            onClick={navigateToSubscribe}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            Subscribe
-          </button>
         </div>
       )}
     </>
@@ -63,3 +63,4 @@ const SubscribeWidget = () => {
 };
 
 export default SubscribeWidget;
+
