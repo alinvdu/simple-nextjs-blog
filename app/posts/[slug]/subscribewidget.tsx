@@ -6,10 +6,11 @@ const SubscribeWidget = () => {
   const [showWidget, setShowWidget] = useState(false);
   const [permanentlyDismissed, setPermanentlyDismissed] = useState(false);
 
+  // Effect to handle showing the widget after scrolling down
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 300 && !permanentlyDismissed) {
+      const scrollPosition = window.scrollY; // Current scroll position
+      if (scrollPosition > 300 && !permanentlyDismissed) { // Show widget if not dismissed
         setShowWidget(true);
       }
     };
@@ -20,25 +21,33 @@ const SubscribeWidget = () => {
     };
   }, [permanentlyDismissed]);
 
-  // Hide widget permanently
+  // Function to hide the widget permanently
   const hideWidget = () => {
-    setPermanentlyDismissed(true);
-    setShowWidget(false);
+    setPermanentlyDismissed(true); // Prevent widget from reappearing
+    setShowWidget(false); // Hide the widget
   };
 
   return (
     <>
       {showWidget && (
         <div
-          className="fixed top-24 right-4 bg-black shadow-lg rounded-lg p-4 pr-6 flex flex-col space-y-2 dark:bg-zinc-800 relative"
+          className="fixed top-24 right-4 w-64 bg-black shadow-lg rounded-lg p-4 pr-8 flex flex-col space-y-2 dark:bg-zinc-800"
           style={{ zIndex: 1000 }}
         >
+          {/* Close Button */}
           <button
             onClick={hideWidget}
-            className="absolute top-1 right-1 w-5 h-5 bg-white text-black rounded-full hover:bg-black hover:text-white flex items-center justify-center"
+            className="absolute top-2 right-2 text-white text-lg rounded-full hover:bg-white hover:text-black flex items-center justify-center transition-all duration-200"
+            style={{
+              width: "24px",
+              height: "24px",
+              lineHeight: "24px",
+            }}
           >
             ✕
           </button>
+
+          {/* Widget Content */}
           <p className="text-white text-sm">
             Don’t miss it, subscribe to futuristic ideas.
           </p>
@@ -55,3 +64,4 @@ const SubscribeWidget = () => {
 };
 
 export default SubscribeWidget;
+
