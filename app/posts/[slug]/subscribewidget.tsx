@@ -4,12 +4,13 @@ import React, { useState, useEffect } from "react";
 
 const SubscribeWidget = () => {
   const [showWidget, setShowWidget] = useState(false);
+  const [permanentlyDismissed, setPermanentlyDismissed] = useState(false);
 
   // Effect to handle showing the widget after scrolling down
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY; // Current scroll position
-      if (scrollPosition > 300) { // Show widget after 300px scroll
+      if (scrollPosition > 300 && !permanentlyDismissed) { // Show widget if not dismissed
         setShowWidget(true);
       }
     };
@@ -18,7 +19,7 @@ const SubscribeWidget = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [permanentlyDismissed]);
 
   // Function to navigate to the subscribe section and hide the widget
   const navigateToSubscribe = () => {
@@ -26,36 +27,37 @@ const SubscribeWidget = () => {
     if (subscribeElement) {
       subscribeElement.scrollIntoView({ behavior: "smooth" });
     }
-    setShowWidget(false); // Hide the widget after pressing Learn More
+    setShowWidget(false); // Temporarily hide widget after pressing Learn More
   };
 
-  // Function to dismiss the widget
+  // Function to dismiss the widget permanently
   const dismissWidget = () => {
-    setShowWidget(false); // Permanently hide the widget
+    setPermanentlyDismissed(true); // Prevent widget from reappearing
+    setShowWidget(false); // Hide the widget
   };
 
   return (
     <>
       {showWidget && (
         <div
-          className="fixed top-16 right-4 bg-white shadow-lg rounded-lg p-3 dark:bg-zinc-800 dark:text-white flex flex-col items-start space-y-2"
+          className="fixed top-24 right-4 bg-black shadow-lg rounded-lg p-4 flex flex-col space-y-2 dark:bg-zinc-800"
           style={{ zIndex: 1000 }}
         >
-          <p className="text-sm">Don’t miss it, subscribe to futuristic ideas.</p>
-          <div className="flex space-x-2">
-            <button
-              onClick={navigateToSubscribe}
-              className="px-3 py-1 text-sm text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
-            >
-              Learn More
-            </button>
-            <button
-              onClick={dismissWidget}
-              className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm"
-            >
-              ✕
-            </button>
-          </div>
+          <button
+            onClick={dismissWidget}
+            className="absolute top-2 right-2 text-white hover:text-gray-300 text-lg"
+          >
+            ✕
+          </button>
+          <p className="text-white text-sm">
+            Don’t miss it, subscribe to futuristic ideas.
+          </p>
+          <button
+            onClick={navigateToSubscribe}
+            className="px-3 py-1 text-sm text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
+          >
+            Learn More
+          </button>
         </div>
       )}
     </>
@@ -63,4 +65,3 @@ const SubscribeWidget = () => {
 };
 
 export default SubscribeWidget;
-
