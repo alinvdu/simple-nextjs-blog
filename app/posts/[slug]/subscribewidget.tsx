@@ -31,7 +31,7 @@ const SubscribeWidget = () => {
     <>
       {showWidget && (
         <div
-          className="fixed top-24 right-4 w-64 bg-black shadow-lg rounded-lg p-4 pr-8 flex flex-col space-y-2 dark:bg-zinc-800"
+          className="fixed top-24 right-4 w-80 bg-black shadow-lg rounded-lg p-6 flex flex-col space-y-4 dark:bg-zinc-800"
           style={{ zIndex: 1000 }}
         >
           {/* Close Button */}
@@ -53,7 +53,7 @@ const SubscribeWidget = () => {
           </p>
           <button
             onClick={hideWidget}
-            className="px-3 py-1 text-sm text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
+            className="px-4 py-2 text-sm text-black bg-white border border-gray-300 rounded hover:bg-gray-100"
           >
             Learn More
           </button>
