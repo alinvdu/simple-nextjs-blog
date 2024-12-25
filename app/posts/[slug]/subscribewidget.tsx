@@ -40,18 +40,16 @@ const SubscribeWidget = () => {
     <>
       {showWidget && (
         <div
-          className="fixed top-24 right-4 w-72 bg-black shadow-lg rounded-lg p-4 flex flex-col space-y-2 dark:bg-zinc-800"
+          className="fixed top-24 right-4 w-[300px] bg-black shadow-lg rounded-lg p-4 flex flex-col space-y-2 dark:bg-zinc-800"
           style={{ zIndex: 1000 }}
         >
           {/* Close Button */}
           <button
             onClick={hideWidget}
-            className="absolute top-2 right-2 text-white rounded-full hover:bg-white hover:text-black flex items-center justify-center transition-all duration-200"
+            className="absolute top-2 right-2 text-white flex items-center justify-center transition-all duration-200"
             style={{
-              width: "16px",
-              height: "16px",
-              lineHeight: "16px",
-              fontSize: "16px"
+              fontSize: "16px",
+              padding: "2px"
             }}
           >
             ✕
