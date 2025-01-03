@@ -8,9 +8,9 @@ import AuthorAttribution from './AuthorAttribution';
 import AuthorAvatar from './AuthorAvatar';
 import { sanitize } from 'isomorphic-dompurify';
 
-const isPost = (type) => type === "post";
+const isPost = (type: string) => type === "post";
 
-export default function PostCard({ post, type }: { post: Post, type: any }) {
+export default function PostCard({ post, type = "post" }: { post: Post, type: string }) {
   const linkHref = isPost() ? `/posts/${post.slug}` : `/bits/${post.slug}`
   return (
     <div>
