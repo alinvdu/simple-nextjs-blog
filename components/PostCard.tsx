@@ -8,11 +8,14 @@ import AuthorAttribution from './AuthorAttribution';
 import AuthorAvatar from './AuthorAvatar';
 import { sanitize } from 'isomorphic-dompurify';
 
-export default function PostCard({ post }: { post: Post }) {
+const isPost = (type) => type === "post";
+
+export default function PostCard({ post, type }: { post: Post, type: any }) {
+  const linkHref = isPost() ? `/posts/${post.slug}` : `/bits/${post.slug}`
   return (
     <div>
       {post.metadata.hero?.imgix_url && (
-        <Link href={`/posts/${post.slug}`}>
+        <Link href={linkHref}>
           <Image
             width={2800}
             height={400}
@@ -26,7 +29,7 @@ export default function PostCard({ post }: { post: Post }) {
         </Link>
       )}
       <h2 className="pb-3 text-xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
-        <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+        <Link href={linkHref}>{post.title}</Link>
       </h2>
       <div className="flex flex-col justify-between space-y-4 md:flex-row md:space-y-0">
         <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-400 md:space-y-0">
@@ -47,7 +50,7 @@ export default function PostCard({ post }: { post: Post }) {
         }}
       />
       <div className="flex items-center justify-between font-medium text-green-600 dark:text-green-200">
-        <Link href={`/posts/${post.slug}`}>
+        <Link href={linkHref}>
           <div className="flex items-center space-x-2">
             <span>Read more</span>
             <ArrowRight className="h-4 w-4 text-inherit" />
