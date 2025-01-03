@@ -28,7 +28,7 @@ export default async ({ params }: { params: { id: string; slug: string } }) => {
           posts.map((post) => {
             return (
               <div key={post.id}>
-                <PostCard post={post} />
+                <PostCard post={post} type="post" />
               </div>
             );
           })}
