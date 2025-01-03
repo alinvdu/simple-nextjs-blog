@@ -19,9 +19,9 @@ export default async function Page(): Promise<JSX.Element> {
       </section>
       <section>
         <h1 className="text-2xl font-bold text-white mb-4">Bits - Ideas & Pieces</h1>
-        <p>
+        <div class="pb-[10px] text-white">
           Small articles with fast written ideas and bits, containing references to papers, other reading material or videos.
-        </p>
+        </div>
         {!bits && <p>You must add at least one Bit to your Bucket</p>}
         {bits &&
           bits.map((bit) => (
