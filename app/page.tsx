@@ -17,11 +17,11 @@ export default async function Page(): Promise<JSX.Element> {
             </div>
           ))}
       </section>
+      <h1 className="text-2xl pb-[0px] font-bold text-white mb-2">Bits - Ideas & Pieces</h1>
+      <div className="pb-[20px] text-white">
+        Small articles with fast written ideas and bits, containing references to papers, other reading material or videos.
+      </div>
       <section className="flex flex-col space-y-16">
-        <h1 className="text-2xl pb-[0px] font-bold text-white mb-2">Bits - Ideas & Pieces</h1>
-        <div className="pb-[20px] text-white">
-          Small articles with fast written ideas and bits, containing references to papers, other reading material or videos.
-        </div>
         {!bits && <p>You must add at least one Bit to your Bucket</p>}
         {bits &&
           bits.map((bit) => (
