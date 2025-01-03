@@ -12,7 +12,7 @@ export default async function Page(): Promise<JSX.Element> {
         {!posts && <p>You must add at least one Post to your Bucket</p>}
         {posts &&
           posts.map((post) => (
-            <div key={post.id}>
+            <div key={post.id} className="mb-1">
               <PostCard post={post} type="post" />
             </div>
           ))}
@@ -25,7 +25,7 @@ export default async function Page(): Promise<JSX.Element> {
         {!bits && <p>You must add at least one Bit to your Bucket</p>}
         {bits &&
           bits.map((bit) => (
-            <div key={bit.id}>
+            <div key={bit.id} className="mb-1">
               <PostCard post={bit} type="bit" />
             </div>
           ))}
