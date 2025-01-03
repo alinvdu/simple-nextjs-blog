@@ -50,6 +50,24 @@ export async function getAllPosts(): Promise<Post[]> {
   return Promise.resolve([]);
 }
 
+  try {
+    // Get all posts
+    const data: any = await Promise.resolve(
+      cosmic.objects
+        .find({
+          type: 'bits',
+        })
+        .props('id,type,slug,title,metadata,created_at')
+        .depth(1)
+    );
+    const posts: Post[] = await data.objects;
+    return Promise.resolve(posts);
+  } catch (error) {
+    console.log('Oof', error);
+  }
+  return Promise.resolve([]);
+}
+
 export async function getPost({
   params,
 }: {
