@@ -1,22 +1,38 @@
 import React from 'react';
 import PostCard from '../components/PostCard';
-import { getAllPosts } from '../lib/cosmic';
+import { getAllPosts, getAllBits } from '../lib/cosmic';
 
 export default async function Page(): Promise<JSX.Element> {
   const posts = await getAllPosts();
+  const bits = await getAllBits();
 
   return (
     <main className="mx-auto mt-4 w-full max-w-5xl flex-col space-y-16 px-4 lg:px-0">
-      {!posts && 'You must add at least one Post to your Bucket'}
-      {posts &&
-        posts.map((post) => {
-          return (
+      <section>
+        <h1 className="text-2xl font-bold mb-4">Posts</h1>
+        <hr className="border-gray-300 mb-6" />
+        {!posts && <p>You must add at least one Post to your Bucket</p>}
+        {posts &&
+          posts.map((post) => (
             <div key={post.id}>
               <PostCard post={post} />
             </div>
-          );
-        })}
+          ))}
+      </section>
+
+      <section>
+        <h1 className="text-2xl font-bold mt-8 mb-4">Bits - Ideas & Pieces</h1>
+        <hr className="border-gray-300 mb-6" />
+        {!bits && <p>You must add at least one Bit to your Bucket</p>}
+        {bits &&
+          bits.map((bit) => (
+            <div key={bit.id}>
+              <PostCard post={bit} />
+            </div>
+          ))}
+      </section>
     </main>
   );
 }
+
 export const revalidate = 60;
