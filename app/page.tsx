@@ -9,7 +9,6 @@ export default async function Page(): Promise<JSX.Element> {
   return (
     <main className="mx-auto mt-4 w-full max-w-5xl flex-col space-y-16 px-4 lg:px-0">
       <section>
-        <h1 className="text-2xl font-bold text-white mb-4">Blog Posts</h1>
         {!posts && <p>You must add at least one Post to your Bucket</p>}
         {posts &&
           posts.map((post) => (
@@ -18,11 +17,11 @@ export default async function Page(): Promise<JSX.Element> {
             </div>
           ))}
       </section>
-
-      <div className="h-1 bg-gray-300 my-8"></div> {/* Subtle divider line  */}
-
       <section>
         <h1 className="text-2xl font-bold text-white mb-4">Bits - Ideas & Pieces</h1>
+        <p>
+          Small articles with fast written ideas and bits, containing references to papers, other reading material or videos.
+        </p>
         {!bits && <p>You must add at least one Bit to your Bucket</p>}
         {bits &&
           bits.map((bit) => (
