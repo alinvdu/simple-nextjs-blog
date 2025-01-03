@@ -14,7 +14,7 @@ export default async function Page(): Promise<JSX.Element> {
         {posts &&
           posts.map((post) => (
             <div key={post.id}>
-              <PostCard post={post} />
+              <PostCard post={post} type="post" />
             </div>
           ))}
       </section>
@@ -27,7 +27,7 @@ export default async function Page(): Promise<JSX.Element> {
         {bits &&
           bits.map((bit) => (
             <div key={bit.id}>
-              <PostCard post={bit} />
+              <PostCard post={bit} type="bit" />
             </div>
           ))}
       </section>
