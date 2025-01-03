@@ -1,5 +1,5 @@
 import { createBucketClient } from '@cosmicjs/sdk';
-import { Post } from './types';
+import { Post, Bit } from './types';
 import { GlobalData } from './types';
 import { Author } from './types';
 
@@ -50,6 +50,7 @@ export async function getAllPosts(): Promise<Post[]> {
   return Promise.resolve([]);
 }
 
+export async function getAllBits(): Promise<Bit[]> {
   try {
     // Get all posts
     const data: any = await Promise.resolve(
@@ -60,7 +61,7 @@ export async function getAllPosts(): Promise<Post[]> {
         .props('id,type,slug,title,metadata,created_at')
         .depth(1)
     );
-    const posts: Post[] = await data.objects;
+    const posts: Bit[] = await data.objects;
     return Promise.resolve(posts);
   } catch (error) {
     console.log('Oof', error);
