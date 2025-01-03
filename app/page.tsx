@@ -19,7 +19,7 @@ export default async function Page(): Promise<JSX.Element> {
           ))}
       </section>
 
-      <div className="h-1 bg-gray-300 my-8"></div> {/* Subtle divider line */}
+      <div className="h-1 bg-gray-300 my-8"></div> {/* Subtle divider line  */}
 
       <section>
         <h1 className="text-2xl font-bold text-white mb-4">Bits - Ideas & Pieces</h1>
