@@ -10,7 +10,7 @@ import AuthorAvatar from '../../../components/AuthorAvatar';
 import AuthorAttribution from '../../../components/AuthorAttribution';
 import { sanitize } from 'isomorphic-dompurify';
 import CodeBlock from "./codeblock";
-import SubscribeWidget from "./subscribewidget";
+import ArrowLeft from '../../../components/SubscribeWidget';
 
 const MailchimpForm = () => {
   return (
