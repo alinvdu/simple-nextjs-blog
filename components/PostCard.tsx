@@ -11,7 +11,7 @@ import { sanitize } from 'isomorphic-dompurify';
 const isPost = (type: string) => type === "post";
 
 export default function PostCard({ post, type = "post" }: { post: Post, type: string }) {
-  const linkHref = isPost() ? `/posts/${post.slug}` : `/bits/${post.slug}`
+  const linkHref = isPost(type) ? `/posts/${post.slug}` : `/bits/${post.slug}`
   return (
     <div>
       {post.metadata.hero?.imgix_url && (
