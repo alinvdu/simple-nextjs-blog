@@ -93,6 +93,30 @@ export async function getPost({
   return Promise.resolve({} as Post);
 }
 
+export async function getBit({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Post> {
+  try {
+    // Get post
+    const data: any = await Promise.resolve(
+      cosmic.objects
+        .findOne({
+          type: 'bits',
+          slug: params.slug,
+        })
+        .props(['id', 'type', 'slug', 'title', 'metadata', 'created_at'])
+        .depth(1)
+    );
+    const post = await data.object;
+    return post;
+  } catch (error) {
+    console.log('Oof', error);
+  }
+  return Promise.resolve({} as Post);
+}
+
 export async function getRelatedPosts({
   params,
 }: {
