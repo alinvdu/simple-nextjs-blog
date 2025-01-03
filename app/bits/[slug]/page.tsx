@@ -195,7 +195,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const post = await getPost({ params });
+  const post = await getBit({ params });
   return {
     title: `${post.title}`,
   };
