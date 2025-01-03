@@ -2,7 +2,7 @@ import React from "react";
 import Link from 'next/link';
 import Image from 'next/image';
 import ArrowLeft from '../../../components/icons/ArrowLeft';
-import { getPost } from '../../../lib/cosmic';
+import { getBit } from '../../../lib/cosmic';
 import { getRelatedPosts } from '../../../lib/cosmic';
 import SuggestedPostCard from '../../../components/SuggestedPostCard';
 import Tag from '../../../components/Tag';
@@ -251,7 +251,7 @@ const renderContent = (post: string) => {
 }
 
 export default async ({ params }: { params: { slug: string } }) => {
-  const post = await getPost({ params });
+  const post = await getBit({ params });
   const suggestedPosts = await getRelatedPosts({ params });
 
   return (
