@@ -282,7 +282,7 @@ export default async ({ params }: { params: { slug: string } }) => {
           <div className="mr-20 flex w-full max-w-5xl flex-col justify-start md:w-3/4">
             <h2>
               {!post && <div className="text-center">Post Not found</div>}
-              {post && <Link href={`/posts/${post.slug}`}>{post.title}</Link>}
+              {post && <Link href={`/bits/${post.slug}`}>{post.title}</Link>}
             </h2>
             {post && (
               <>
