@@ -11,7 +11,7 @@ export default function Footer(): JSX.Element {
       >
         <div className="flex items-center space-x-2">
           <span className="text-zinc-700 dark:text-zinc-300">
-            Cogito Machina - Artificial Intelligence & The Human Mind.
+            Cogito Machina - Human-AI Symbiosis.
           </span>
         </div>
       </a>
